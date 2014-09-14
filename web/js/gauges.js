@@ -70,9 +70,39 @@ var colorsGreen = [
   var gauge_climb = new JustGage({
     id: "gauge_climb",
     value: 0,
-    min: -10,
-    max: 10,
+    min: 0,
+    max: 5,
     title: "Climb (m/s)",
     levelColorsGradient: false,
-    levelColors : colorsGreen
+    levelColors : colorsGreenToRed
+  });
+
+  var gauge_pitch = new JustGage({
+    id: "gauge_pitch",
+    value: 0,
+    min: 0,
+    max: 5,
+    title: "Pitch (m/s)",
+    levelColorsGradient: false,
+    levelColors : colorsGreenToRed
+  });
+
+  var gauge_yaw = new JustGage({
+    id: "gauge_yaw",
+    value: 0,
+    min: 0,
+    max: 5,
+    title: "Yaw (deg/s)",
+    levelColorsGradient: false,
+    levelColors : colorsGreenToRed
+  });
+
+  var gauge_roll = new JustGage({
+    id: "gauge_roll",
+    value: 0,
+    min: 0,
+    max: 5,
+    title: "Roll (m/s)",
+    levelColorsGradient: false,
+    levelColors : colorsGreenToRed
   });

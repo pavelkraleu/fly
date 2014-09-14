@@ -43,7 +43,15 @@ $(function() {
                if (obj.type == "vfr_hud"){
                		
                		gauge_altitude.refresh(obj.content.alt);
-               		gauge_climb.refresh(obj.content.climb);
+               		gauge_climb.refresh(Math.abs(obj.content.climb));
+               		
+               } 
+
+               if (obj.type == "attitude"){
+               		
+               		gauge_pitch.refresh(Math.abs(obj.content.pitchspeed));
+               		gauge_yaw.refresh(Math.abs(obj.content.yawspeed));
+               		gauge_roll.refresh(Math.abs(obj.content.rollspeed));
                		
                } 
           }

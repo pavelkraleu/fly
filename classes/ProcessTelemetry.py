@@ -46,11 +46,22 @@ class ProcessTelemetry:
 			new_packet = self.processMAVlinkPacketVfrHud(packet,new_packet_skeleton)
 		elif packet_type == "RC_CHANNELS_RAW":
 			new_packet = self.processMAVlinkPacketRcChannelsRaw(packet,new_packet_skeleton)
+		elif packet_type == "ATTITUDE":
+			new_packet = self.processMAVlinkPacketAttitude(packet,new_packet_skeleton)
 
 		#print(new_packet)
 		return new_packet
 		
+	def processMAVlinkPacketAttitude(self,packet,new_packet):
+		new_packet["type"] = "attitude"
 
+		new_packet["content"]["pitchspeed"] = round(packet["content"]["pitchspeed"],2)
+		new_packet["content"]["rollspeed"] = round(packet["content"]["rollspeed"],2)
+		new_packet["content"]["yawspeed"] = round(packet["content"]["yawspeed"],2)
+
+		return new_packet
+
+		
 	def processMAVlinkPacketGPSRawInt(self,packet,new_packet):
 		new_packet["type"] = "gps"
 
