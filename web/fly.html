@@ -1,10 +1,24 @@
 <html>
 	<head>
-	<title>Drone</title>
+		<title>Drone</title>
+		<link href="css/style.css" rel="stylesheet">
 	</head>
 	<body>
 
-	<div id="gauge" class="20x16px"></div>
+	<div class="gauge_block">
+		<h2>Power</h2>
+		<div id="gauge_voltage" class="gauge_basic"></div>
+		<div id="gauge_current" class="gauge_basic"></div>
+		<div id="gauge_battery_remaining" class="gauge_basic"></div>
+	</div>
+
+	<div class="gauge_block">
+		<h2>Position</h2>
+		<div id="gauge_satellites_visible" class="gauge_basic"></div>
+		<div id="gauge_altitude" class="gauge_basic"></div>
+		<div id="gauge_climb" class="gauge_basic"></div>
+	</div>
+
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/raphael.2.1.0.min.js"></script>

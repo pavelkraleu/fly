@@ -1,0 +1,16 @@
+.gauge_basic{
+	width:200px;
+	height:160px;
+	float:left;	
+}
+
+.gauge_block h2{
+	font-weight: bold;
+	font-size: 25px;
+	font-family: Arial;
+}
+
+.gauge_block {
+	height:200px;
+	position: relative;;
+}

@@ -1,3 +1,6 @@
+seq = 0;
+
+
 $(function() {
       wsuri = "ws://10.0.0.46:10000";
 
@@ -24,10 +27,38 @@ $(function() {
                obj = JSON.parse(e.data);
                
                if (obj.type == "sys_status"){
-               		g.refresh(obj.content.voltage_battery);
-               		//g.refresh(100);
+               		
+               		gauge_voltage.refresh(obj.content.voltage_battery);
+               		gauge_current.refresh(obj.content.current_battery);
+               		gauge_battery_remaining.refresh(obj.content.battery_remaining);
+               		
+               } 
+
+               if (obj.type == "gps"){
+               		
+               		gauge_satellites_visible.refresh(obj.content.satellites_visible);
+               		
+               } 
+
+               if (obj.type == "vfr_hud"){
+               		
+               		gauge_altitude.refresh(obj.content.alt);
+               		gauge_climb.refresh(obj.content.climb);
+               		
                } 
           }
+
+		setInterval(function(){sendTick()}, 1000);
+
+        function sendTick(){
+      		msg = "{\"type\":\"tick_client\",\"seq\":"+seq+"}";
+	      	if (sock) {
+	      	   sock.send(msg);
+	      	   seq++;
+	      	   console.log("Sent: " + msg);
+	      	}
+      }
         }
 
 });
+

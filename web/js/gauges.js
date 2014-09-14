@@ -1,9 +1,78 @@
+var colorsRedtoGreen = [
+  "#FF0000",
+  "#FFCC00",
+  "#33CC33"
+]
 
-  var g = new JustGage({
-    id: "gauge",
+var colorsGreenToRed = [
+  "#33CC33",
+  "#FFCC00",
+  "#FF0000"
+]
+
+var colorsGreen = [
+  "#33CC33",
+  "#33CC33",
+  "#33CC33"
+]
+
+
+  var gauge_voltage = new JustGage({
+    id: "gauge_voltage",
     value: 0,
     min: 10,
     max: 16.8,
-    title: "Voltage",
-    levelColorsGradient: false
+    title: "Voltage (V)",
+    levelColorsGradient: false,
+    levelColors : colorsRedtoGreen
+  });
+
+  var gauge_current = new JustGage({
+    id: "gauge_current",
+    value: 0,
+    min: 0,
+    max: 70,
+    title: "Currnet (A)",
+    levelColorsGradient: false,
+    levelColors : colorsRedtoGreen
+  });
+
+  var gauge_battery_remaining = new JustGage({
+    id: "gauge_battery_remaining",
+    value: 0,
+    min: 0,
+    max: 100,
+    title: "Battery remaining (%)",
+    levelColorsGradient: false,
+    levelColors : colorsRedtoGreen
+  });
+
+  var gauge_satellites_visible = new JustGage({
+    id: "gauge_satellites_visible",
+    value: 0,
+    min: 0,
+    max: 10,
+    title: "GPS satellites",
+    levelColorsGradient: false,
+    levelColors : colorsRedtoGreen
+  });
+
+  var gauge_altitude = new JustGage({
+    id: "gauge_altitude",
+    value: 0,
+    min: 0,
+    max: 10,
+    title: "Altitude (m)",
+    levelColorsGradient: false,
+    levelColors : colorsGreen
+  });
+
+  var gauge_climb = new JustGage({
+    id: "gauge_climb",
+    value: 0,
+    min: -10,
+    max: 10,
+    title: "Climb (m/s)",
+    levelColorsGradient: false,
+    levelColors : colorsGreen
   });
