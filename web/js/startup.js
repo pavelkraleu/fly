@@ -1,17 +1,15 @@
-seq = 0;
-
-
 $(function() {
-	lastHeading = 0;
-	headingThr = 10;
+	var seq = 0;
+	var lastHeading = 0;
+	var headingThr = 10;
 
 	  function updateMap(lon,lat){
-	        myLatLng = new google.maps.LatLng( lat, lon );
+	        var myLatLng = new google.maps.LatLng( lat, lon );
 	        google_map.setCenter(myLatLng);   
 	        map_marker.setPosition(myLatLng);
 	  }
 	  function updateMarker(heading){
-	  		diff = Math.abs(heading - lastHeading);
+	  		var diff = Math.abs(heading - lastHeading);
 	  		if(diff >= headingThr){
 	  			lastHeading = heading;
 	  			// To proevent frequent rendering :)
@@ -32,19 +30,19 @@ $(function() {
       	}
 	  }
 
-      wsuri = "ws://10.8.0.6:1001";
+      var wsuri = "ws://10.8.0.6:1001";
 
       if ("WebSocket" in window) {
-      	sock = new WebSocket(wsuri);
+      	var sock = new WebSocket(wsuri);
       } else if ("MozWebSocket" in window) {
-      	sock = new MozWebSocket(wsuri);
+      	var sock = new MozWebSocket(wsuri);
       } else {
       	console.log("Browser does not support WebSocket!");
       }
 
       if (sock) {
          sock.onopen = function() {
-            console.log("Connected to " + wsuri);
+            console.log("Telemetry Connected to " + wsuri);
          }
 
          sock.onclose = function(e) {
@@ -53,8 +51,8 @@ $(function() {
          }
 
          sock.onmessage = function(e) {
-               console.log(e.data);
-               obj = JSON.parse(e.data);
+               //console.log(e.data);
+               var obj = JSON.parse(e.data);
                
                if (obj.type == "sys_status"){
                		
@@ -91,7 +89,7 @@ $(function() {
 		setInterval(function(){sendTick()}, 1000);
 
         function sendTick(){
-      		msg = "{\"type\":\"tick_client\",\"seq\":"+seq+"}";
+      		var msg = "{\"type\":\"tick_client\",\"seq\":"+seq+"}";
 	      	if (sock) {
 	      	   sock.send(msg);
 	      	   seq++;

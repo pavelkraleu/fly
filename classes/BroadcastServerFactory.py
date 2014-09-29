@@ -110,7 +110,7 @@ class BroadcastServerFactory(WebSocketServerFactory):
 
 	def broadcast(self, msg):
 		#print("broadcast "+str(msg))
-
+		
 		#jpgnp = np.array(msg).tostring()
 		if self.server_type == "images":
 			#jpgb64 = base64.b64encode(msg)
