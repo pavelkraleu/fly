@@ -2,7 +2,37 @@ seq = 0;
 
 
 $(function() {
-      wsuri = "ws://10.0.0.46:10000";
+	lastHeading = 0;
+	headingThr = 10;
+
+	  function updateMap(lon,lat){
+	        myLatLng = new google.maps.LatLng( lat, lon );
+	        google_map.setCenter(myLatLng);   
+	        map_marker.setPosition(myLatLng);
+	  }
+	  function updateMarker(heading){
+	  		diff = Math.abs(heading - lastHeading);
+	  		if(diff >= headingThr){
+	  			lastHeading = heading;
+	  			// To proevent frequent rendering :)
+		          map_marker.setOptions(    
+		          				{position: google_map.getCenter(),
+
+		                                  icon: {
+		                                    rotation: heading,
+		                                    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+		                                    scale: 10,
+		                                    fillOpacity: 1,
+		                                    fillColor: "#FF0000"
+		                                  },
+
+		                                  draggable: true,
+		                                  map: google_map}
+		          );
+      	}
+	  }
+
+      wsuri = "ws://10.8.0.1:10000";
 
       if ("WebSocket" in window) {
       	sock = new WebSocket(wsuri);
@@ -37,6 +67,7 @@ $(function() {
                if (obj.type == "gps"){
                		
                		gauge_satellites_visible.refresh(obj.content.satellites_visible);
+               		updateMap(obj.content.lon,obj.content.lat);
                		
                } 
 
@@ -44,6 +75,7 @@ $(function() {
                		
                		gauge_altitude.refresh(obj.content.alt);
                		gauge_climb.refresh(Math.abs(obj.content.climb));
+               		updateMarker(obj.content.heading);
                		
                } 
 

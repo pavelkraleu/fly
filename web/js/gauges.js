@@ -32,7 +32,7 @@ var colorsGreen = [
     value: 0,
     min: 0,
     max: 70,
-    title: "Currnet (A)",
+    title: "Current (A)",
     levelColorsGradient: false,
     levelColors : colorsRedtoGreen
   });
