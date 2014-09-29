@@ -32,7 +32,7 @@ $(function() {
       	}
 	  }
 
-      wsuri = "ws://10.8.0.1:10000";
+      wsuri = "ws://10.8.0.6:1001";
 
       if ("WebSocket" in window) {
       	sock = new WebSocket(wsuri);
