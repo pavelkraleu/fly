@@ -2,6 +2,7 @@ $(function() {
    var seq = 0;
    var lastHeading = 0;
    var headingThr = 10;
+   var frames = 0;
 
       var wsuri = "ws://10.8.0.6:1002";
 
@@ -28,8 +29,16 @@ $(function() {
                var image = document.getElementById('camera');
                image.src = 'data:image/jpg;base64,'+e.data;
                image_size = e.data.length;
+               frames++;
 
           }
+
+      setInterval(function(){updateFPS()}, 1000);
+         function updateFPS(){
+            gauge_camera_fps.refresh(frames);
+            frames = 0;
+
+         }
 
       setInterval(function(){sendTick()}, 1000);
 

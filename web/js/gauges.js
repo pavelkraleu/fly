@@ -106,3 +106,13 @@ var colorsGreen = [
     levelColorsGradient: false,
     levelColors : colorsGreenToRed
   });
+
+    var gauge_camera_fps = new JustGage({
+    id: "gauge_camera_fps",
+    value: 0,
+    min: 0,
+    max: 30,
+    title: "FPS",
+    levelColorsGradient: false,
+    levelColors : colorsRedtoGreen
+  });

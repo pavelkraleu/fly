@@ -110,7 +110,7 @@ class BroadcastServerFactory(WebSocketServerFactory):
 
 	def broadcast(self, msg):
 		#print("broadcast "+str(msg))
-		
+
 		#jpgnp = np.array(msg).tostring()
 		if self.server_type == "images":
 			#jpgb64 = base64.b64encode(msg)
@@ -119,5 +119,5 @@ class BroadcastServerFactory(WebSocketServerFactory):
 
 		if self.server_type == "telemetry":
 			for ind in self.clients:	
-				print(json.dumps(msg))
+				#print(json.dumps(msg))
 				self.clients[ind].clientObj.sendMessage(json.dumps(msg).encode('utf-8'),isBinary = False)
