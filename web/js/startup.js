@@ -54,6 +54,10 @@ $(function() {
          sock.onmessage = function(e) {
                //console.log(e.data);
                var obj = JSON.parse(e.data);
+
+               if (obj.type == "flightmode"){
+               		document.getElementById("modebox").innerHTML = obj.content.flightmode;
+               }
                
                if (obj.type == "sys_status"){
                		

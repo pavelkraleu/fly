@@ -26,11 +26,18 @@ class ProcessTelemetry:
 			if packet["type"] == "mavlink":
 				self.packet_count+=1
 				return self.processMAVlinkPacket(packet)
+			if packet["type"] == "flightmode":
+				self.packet_count+=1
+				return self.processFlightmodePacket(packet)
 		except KeyError:
 			#print("Invalid packet type")
 			self.packet_count_invalid+=1
 
-		
+	def processFlightmodePacket(self,packet):		
+		new_packet = {'source':packet["source"],'type':'flightmode','content':{"flightmode":packet["content"]["mode"]}} 
+
+		return new_packet
+
 
 	def processMAVlinkPacket(self,packet):
 		packet_type = packet["content"]["mavpackettype"]

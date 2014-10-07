@@ -35,3 +35,12 @@ h2{
 	height:90%;
 	width:50%;
 }
+
+#modebox{
+	float:left;
+	width:200px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	font-family: Arial;
+}

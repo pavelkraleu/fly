@@ -82,7 +82,7 @@ var colorsGreen = [
     value: 0,
     min: 0,
     max: 5,
-    title: "Pitch (m/s)",
+    title: "Pitch (deg/s)",
     levelColorsGradient: false,
     levelColors : colorsGreenToRed
   });
@@ -102,7 +102,7 @@ var colorsGreen = [
     value: 0,
     min: 0,
     max: 5,
-    title: "Roll (m/s)",
+    title: "Roll (deg/s)",
     levelColorsGradient: false,
     levelColors : colorsGreenToRed
   });
