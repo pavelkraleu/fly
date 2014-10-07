@@ -5,28 +5,37 @@
 	</head>
 	<body>
 
-	<div class="gauge_block">
-		<h2>Power</h2>
-		<div id="gauge_voltage" class="gauge_basic"></div>
-		<div id="gauge_current" class="gauge_basic"></div>
-		<div id="gauge_battery_remaining" class="gauge_basic"></div>
-		<div id="gauge_camera_fps" class="gauge_basic"></div>
-		<img id="camera" src="img/test.jpeg">
-	</div>
+	<div class="gauges">
+		<div class="gauge_block">
+			<h2>Power</h2>
+			<div id="gauge_voltage" class="gauge_basic"></div>
+			<div id="gauge_current" class="gauge_basic"></div>
+			<div id="gauge_battery_remaining" class="gauge_basic"></div>
+		</div>
 
-	<div class="gauge_block">
-		<h2>Position</h2>
-		<div id="gauge_satellites_visible" class="gauge_basic"></div>
-		<div id="gauge_altitude" class="gauge_basic"></div>
-		<div id="gauge_climb" class="gauge_basic"></div>
-		<div id="gauge_pitch" class="gauge_basic"></div>
-		<div id="gauge_roll" class="gauge_basic"></div>
-		<div id="gauge_yaw" class="gauge_basic"></div>
+
+		<div class="gauge_block">
+			<h2>Position</h2>
+			<div id="gauge_satellites_visible" class="gauge_basic"></div>
+			<div id="gauge_altitude" class="gauge_basic"></div>
+			<div id="gauge_climb" class="gauge_basic"></div>
+		</div>
+
+		<div class="gauge_block">
+			<h2>Position</h2>
+			<div id="gauge_pitch" class="gauge_basic"></div>
+			<div id="gauge_roll" class="gauge_basic"></div>
+			<div id="gauge_yaw" class="gauge_basic"></div>
+		</div>
 	</div>
 	
-	<h2>Map</h2>
-	<div id="gmap_canvas" style="border:0; width:100%; height:30%;">
-	
+	<div class="map_box">
+		<h2>Map</h2>
+		<div id="gmap_canvas" style="border:0;  height:50%;"></div>
+		<img id="camera" src="img/test.jpeg">
+		<div id="gauge_camera_fps" class="gauge_basic"></div>
+	</div>
+		
 
 
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>

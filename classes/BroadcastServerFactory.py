@@ -12,9 +12,9 @@ class BroadcastServerFactory(WebSocketServerFactory):
 
 		self.server_type = server_type
 
-		self.cleanClientsTimeout = 5
+		self.cleanClientsTimeout = 1
 		self.clientMaxTimeout = 30
-		self.statsTimeout = 5
+		self.statsTimeout = 1
 
 		self.clients = {}
 
@@ -24,19 +24,23 @@ class BroadcastServerFactory(WebSocketServerFactory):
 
 		self.cycleTracker = [0]
 
-		self.timeouts = []
-		self.packetLoss = []
+		self.timeouts = [0]
+		self.packetLoss = [0]
+
+		self.messagesCount = 0
 
 	def printStats(self,loop):
-		print("STATS")
+		print("STATS "+self.server_type)
 		print("Busy cycles {0:.2f}".format(np.mean(self.cycleTracker)))
 		print("Num of clients {0}".format(len(self.clients)))
-		if len(self.clients) > 0:
+		print("Messages "+str(self.messagesCount/self.statsTimeout)+"/s")
+		if len(self.clients) and len(self.timeouts) > 0:
 			print("Time Max {0:.2f}s Min {1:.2f}s Avg {2:.2f}s".format(max(self.timeouts),min(self.timeouts),np.mean(self.timeouts)))
-			print("Loss Max {0} Min {1} Avg {2}".format(max(self.packetLoss),min(self.packetLoss),np.mean(self.packetLoss)))
-
+			#print("Loss Max {0} Min {1} Avg {2}".format(max(self.packetLoss),min(self.packetLoss),np.mean(self.packetLoss)))
+			pass
 		print()
 
+		self.messagesCount= 0
 		loop.call_later(self.statsTimeout, self.printStats, loop)
 
 	def trackcycles(self,gotData):
@@ -55,6 +59,7 @@ class BroadcastServerFactory(WebSocketServerFactory):
 			else:
 				packet = self.recv_context.recv(flags=zmq.NOBLOCK)
 
+			self.messagesCount += 1
 			self.broadcast(packet)
 			#print("data")
 			#print(packet)

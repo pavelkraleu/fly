@@ -11,7 +11,7 @@ class ProcessTelemetry:
 	def processMetrics(self):
 		metric_delay = time.time() - self.last_metric_exec 
 
-		print("packet_count {}/sec packet_count_invalid {}/sec".format(self.packet_count/metric_delay,self.packet_count_invalid/metric_delay))
+		print("TELEMETRY packet_count {}/sec packet_count_invalid {}/sec".format(self.packet_count/metric_delay,self.packet_count_invalid/metric_delay))
 
 		packet = {'packet_count':self.packet_count,'packet_count_invalid':self.packet_count_invalid}
 

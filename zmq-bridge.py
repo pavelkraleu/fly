@@ -59,5 +59,5 @@ while True:
 			send_socket.send_json(new_packet)
 
 	if time.time() >= (last_metric_exec + metric_period):
-		print(processor.processMetrics())
+		metric_packet = processor.processMetrics()
 		last_metric_exec = time.time()

@@ -12,14 +12,26 @@ h2{
 
 .gauge_block {
 	height:200px;
-	position: relative;;
+	position: relative;
+	
 }
 
 #camera {
 	height:240;
 	width:320;
 	border: 1px solid black;
-	margin-top: -40px;
-	margin-left: 40px;
-	
+	margin-top: 10px;
+	margin-right: 50px;
+	float:left;
+}
+
+.gauges {
+	width:50%;
+	float:left;
+}
+
+.map_box {
+	float:left;
+	height:90%;
+	width:50%;
 }

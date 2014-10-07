@@ -22,6 +22,7 @@ $(function() {
          sock.onclose = function(e) {
             console.log("Connection closed (wasClean = " + e.wasClean + ", code = " + e.code + ", reason = '" + e.reason + "')");
             sock = null;
+            setTimeout(function () {location.reload();}, 2*1000);
          }
 
          sock.onmessage = function(e) {
